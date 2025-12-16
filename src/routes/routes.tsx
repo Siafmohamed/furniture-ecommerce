@@ -28,6 +28,7 @@ const LoadingFallback: React.FC = () => (
 const HomePage = lazy(() => import("../pages/Home/HomePage"));
 const ProductsPage = lazy(() => import("../features/products/pages/ProductsPage"));
 const ProductDetailPage = lazy(() => import("../routes/pages/ProductDetailPage"));
+const ProductDetailErrorPage = lazy(() => import("../routes/pages/ProductDetailErrorPage"));
 const CategoryPage = lazy(() => import("../routes/pages/CategoryPage"));
 const AboutPage = lazy(() => import("../routes/pages/AboutPage"));
 const ContactPage = lazy(() => import("../routes/pages/ContactPage"));
@@ -93,6 +94,11 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<LoadingFallback />}>
             <ProductDetailPage />
+          </Suspense>
+        ),
+        errorElement: (
+          <Suspense fallback={<LoadingFallback />}>
+            <ProductDetailErrorPage />
           </Suspense>
         ),
         meta: { title: "Product Details" },
@@ -284,9 +290,6 @@ export const router = createBrowserRouter([
 export const AppRouter: React.FC = () => {
   return <RouterProvider router={router} />;
 };
-
-
-
 
 
 

@@ -2,11 +2,18 @@
 import ShowcaseItem from "./ShowcaseItem";
 
 const TwoColumnShowcase = () => (
-  <section className="container  bg-[#FAF4F4] mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-    
-    <div className="grid md:grid-cols-2 gap-8">
-      <ShowcaseItem title="Side table" imageUrl="https://placehold.co/400x300/E8E8E8/333?text=Side+Table+1" />
-      <ShowcaseItem title="Side table" imageUrl="https://placehold.co/400x300/DCDCDC/333?text=Side+Table+2" />
+  <section className="bg-[#FBEDED]">
+    <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 grid md:grid-cols-2 gap-10">
+      <ShowcaseItem
+        title="Side table"
+        subtitle="New modern"
+        imageUrl="https://placehold.co/430x320/F9E4E4/333?text=Side+table"
+      />
+      <ShowcaseItem
+        title="Side table"
+        subtitle="Minimalist"
+        imageUrl="https://placehold.co/430x320/F4DADA/333?text=Single+seater"
+      />
     </div>
   </section>
 );

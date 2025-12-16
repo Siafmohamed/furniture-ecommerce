@@ -1,5 +1,4 @@
 import React from "react";
-import MainLayout from "../../components/templates/MainLayout/MainLayout";
 
 // Import feature components
 import HeroBanner from "../../features/home/components/HeroBanner";
@@ -11,7 +10,7 @@ import InstagramSection from "../../features/home/components/InstagramSection";
 
 const HomePage = () => {
   return (
-    <MainLayout>
+    <>
       {/* Step 4: Feature Components */}
       <HeroBanner />
       <TwoColumnShowcase />
@@ -19,7 +18,7 @@ const HomePage = () => {
       <MidPageBanner />
       <BlogPreview />
       <InstagramSection />
-    </MainLayout>
+    </>
   );
 };
 

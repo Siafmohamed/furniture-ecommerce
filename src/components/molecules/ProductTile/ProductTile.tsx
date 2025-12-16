@@ -70,4 +70,3 @@ const ProductTile: React.FC<ProductTileProps> = ({ product, viewMode = "grid" })
 };
 
 export default ProductTile;
-

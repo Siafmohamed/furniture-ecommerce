@@ -7,15 +7,12 @@
 
 import React from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
-import Header from "../../components/organisms/Header/Header";
-import Footer from "../../components/organisms/Footer/Footer";
-
 const DashboardLayout: React.FC = () => {
   const location = useLocation();
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex gap-8">
           {/* Sidebar Navigation */}
@@ -80,12 +77,14 @@ const DashboardLayout: React.FC = () => {
           </main>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
 
 export default DashboardLayout;
+
+
+
 
 
 

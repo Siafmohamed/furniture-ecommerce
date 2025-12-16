@@ -1,5 +1,6 @@
 import React from "react";
-import ProductTile, { type ProductTileData } from "../../molecules/ProductTile/ProductTile";
+import ClickableProductTile from "../../molecules/ProductTile/ClickableProductTile";
+import { type ProductTileData } from "../../molecules/ProductTile/ProductTile";
 import { type ViewMode } from "../../../features/products/hooks/useProductCatalog";
 
 type ProductGridProps = {
@@ -19,11 +20,10 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, viewMode = "grid" }
       }
     >
       {products.map((product) => (
-        <ProductTile key={product.id} product={product} viewMode={viewMode} />
+        <ClickableProductTile key={product.id} product={product} viewMode={viewMode} />
       ))}
     </div>
   );
 };
 
 export default ProductGrid;
-
