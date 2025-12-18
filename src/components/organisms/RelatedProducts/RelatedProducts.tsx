@@ -58,3 +58,11 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({
 export default RelatedProducts;
 
 
+
+
+
+
+
+
+
+

@@ -7,9 +7,9 @@ export type ProductTileData = {
   id: string | number;
   name: string;
   price: number;
-  image: string;
+  image_path: string;
   category: string;
-  tag?: string;
+  tags?: string | null;
 };
 
 type ProductTileProps = {
@@ -33,13 +33,13 @@ const ProductTile: React.FC<ProductTileProps> = ({ product, viewMode = "grid" })
           isList ? "h-28 w-28 shrink-0 rounded-lg" : "aspect-[4/3]"
         )}
       >
-        {product.tag && (
+        {product.tags && (
           <span className="absolute left-3 top-3 rounded-full bg-amber-500 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
-            {product.tag}
+            {product.tags}
           </span>
         )}
         <img
-          src={product.image}
+          src={product.image_path}
           alt={product.name}
           className={clsx(
             "object-contain transition duration-500 group-hover:scale-105",

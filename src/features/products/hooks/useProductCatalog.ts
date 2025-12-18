@@ -4,18 +4,19 @@ import { type ProductTileData } from "../../../components/molecules/ProductTile/
 export type ViewMode = "grid" | "list";
 
 const useProductCatalog = (products: ProductTileData[]) => {
+  const safeProducts = Array.isArray(products) ? products : [];
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState<string>("All");
   const [sort, setSort] = useState<string>("featured");
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
 
   const categories = useMemo(
-    () => Array.from(new Set(products.map((product) => product.category))),
-    [products]
+    () => Array.from(new Set(safeProducts.map((product) => product.category))),
+    [safeProducts]
   );
 
   const filteredProducts = useMemo(() => {
-    let result = [...products];
+    let result = [...safeProducts];
 
     if (category !== "All") {
       result = result.filter((product) => product.category === category);
@@ -37,7 +38,7 @@ const useProductCatalog = (products: ProductTileData[]) => {
     }
 
     return result;
-  }, [category, search, sort, products]);
+  }, [category, search, sort, safeProducts]);
 
   return {
     categories,

@@ -32,6 +32,7 @@ const ProductDetailErrorPage = lazy(() => import("../routes/pages/ProductDetailE
 const CategoryPage = lazy(() => import("../routes/pages/CategoryPage"));
 const AboutPage = lazy(() => import("../routes/pages/AboutPage"));
 const ContactPage = lazy(() => import("../routes/pages/ContactPage"));
+const CartPage = lazy(() => import("../routes/pages/CartPage"));
 const NotFoundPage = lazy(() => import("../routes/pages/NotFoundPage"));
 
 /**
@@ -129,6 +130,15 @@ export const router = createBrowserRouter([
           </Suspense>
         ),
         meta: { title: "Contact", showInNav: true },
+      },
+      {
+        path: "cart",
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <CartPage />
+          </Suspense>
+        ),
+        meta: { title: "Shopping Cart" },
       },
     ],
   },

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../../contexts/CartContext";
 import Navigation from "./Navigation";
 import MobileMenu from "./MobileMenu";
 import Icon from "../../atoms/Icon/Icon";
@@ -7,6 +8,7 @@ import Icon from "../../atoms/Icon/Icon";
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { totalItems } = useCart();
 
   const handleUserIconClick = () => {
     // Navigate to the combined auth page
@@ -27,7 +29,18 @@ const Header = () => {
           >
             <Icon name="User" size="medium" className="text-gray-600 hover:text-amber-500 transition duration-150" />
           </button>
-          <Icon name="ShoppingCart" size="medium" className="text-gray-600 hover:text-amber-500 transition duration-150" />
+          <button 
+            onClick={() => navigate("/cart")}
+            className="relative cursor-pointer"
+            aria-label="Shopping cart"
+          >
+            <Icon name="ShoppingCart" size="medium" className="text-gray-600 hover:text-amber-500 transition duration-150" />
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 bg-amber-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+          </button>
         </div>
         <button className="lg:hidden" onClick={() => setIsMobileMenuOpen(true)}>
           <span>☰</span>

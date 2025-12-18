@@ -20,7 +20,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
           <li key={index} className="flex items-center gap-2">
             {index > 0 && (
               <Text size="sm" color="text-gray-400" className="mx-1">
-                /
+                &gt;
               </Text>
             )}
             {item.href && index < items.length - 1 ? (
@@ -42,6 +42,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, className }) => {
 };
 
 export default Breadcrumb;
+
 
 
 

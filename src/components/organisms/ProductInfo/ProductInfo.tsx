@@ -7,6 +7,7 @@
  */
 
 import React, { useState } from "react";
+import { useCart } from "../../../contexts/CartContext";
 import Heading from "../../atoms/Heading/Heading";
 import Text from "../../atoms/Text/Text";
 import Rating from "../../molecules/Rating/Rating";
@@ -38,12 +39,6 @@ type ProductInfoProps = {
   category: string;
   /** Product tags */
   tags: string[];
-  /** Add to cart handler */
-  onAddToCart: (options: {
-    size: string;
-    color: string;
-    quantity: number;
-  }) => void;
   /** Wishlist handler */
   onWishlistToggle?: () => void;
   /** Whether product is in wishlist */
@@ -65,7 +60,6 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
   sku,
   category,
   tags,
-  onAddToCart,
   onWishlistToggle,
   isInWishlist = false,
   productUrl,
@@ -75,16 +69,24 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
   const [selectedColor, setSelectedColor] = useState<string>(colors[0]?.value || "");
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
+  const { addItem } = useCart();
 
   const handleAddToCart = async () => {
     setIsAdding(true);
     // Simulate async add to cart
     await new Promise((resolve) => setTimeout(resolve, 500));
-    onAddToCart({
+    
+    // Add to cart using context
+    addItem({
+      id: sku, // Using SKU as ID for now
+      name,
+      price,
+      image: productImage || '',
+      quantity,
       size: selectedSize,
       color: selectedColor,
-      quantity,
     });
+    
     setIsAdding(false);
   };
 
@@ -101,7 +103,9 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
       </Text>
 
       {/* Rating */}
-      <Rating rating={rating} reviewCount={reviewCount} />
+      <div className="flex items-center gap-2">
+        <Rating rating={rating} reviewCount={reviewCount} />
+      </div>
 
       {/* Description */}
       <Text className="text-gray-700 leading-relaxed">{description}</Text>
@@ -156,12 +160,12 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
 
       {/* Add to Cart Button */}
       <Button
-        variant="primary"
+        variant="outline"
         fullWidth
         onClick={handleAddToCart}
         isLoading={isAdding}
         disabled={isAdding}
-        className="py-4"
+        className="py-3 border-2 border-gray-900 text-gray-900 hover:bg-gray-50"
       >
         Add To Cart
       </Button>
@@ -203,6 +207,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
 };
 
 export default ProductInfo;
+
 
 
 

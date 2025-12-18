@@ -20,22 +20,35 @@ export type ProductReview = {
 };
 
 export type Product = {
-  id: string | number;
-  name: string;
+  id: string;                    // API uses UUID string
+  name: string;                  
   price: number;
-  images: string[];
+  discount_price?: number;        // optional field from API
+  images: string[];               // convert image_path from API into array
   description: string;
-  shortDescription: string;
-  rating: number;
-  reviewCount: number;
-  sizes: ProductSize[];
-  colors: ProductColor[];
-  sku: string;
+  shortDescription?: string;      // optional
+  rating?: number;                // not in API yet, optional
+  reviewCount?: number;           // optional
+  sizes?: ProductSize[];          // optional, if your API supports it
+  colors?: ProductColor[];        // optional
+  sku: string;                    
   category: string;
-  tags: string[];
-  additionalInfo?: Record<string, string>;
-  reviews?: ProductReview[];
-  inStock: boolean;
+  tags: string[];                 // convert API null to empty array if needed
+  inStock: boolean;               // derive from stock > 0
+};
+
+
+export type ProductApiResponse = {
+  success: boolean;
+  count: number;
+  data: {
+    id: string;
+    name: string;
+    price: number;
+    image_path: string;
+    category: string;
+    tags?: string | null;
+  }[];
 };
 
 export type CartItem = {
@@ -47,6 +60,14 @@ export type CartItem = {
   color: string;
   quantity: number;
 };
+
+
+
+
+
+
+
+
 
 
 

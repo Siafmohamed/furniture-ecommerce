@@ -40,7 +40,7 @@ const ProductTabs: React.FC<ProductTabsProps> = ({
   const tabs = [
     { id: "description" as Tab, label: "Description" },
     { id: "additional" as Tab, label: "Additional Information" },
-    { id: "reviews" as Tab, label: `Reviews [${reviews.length}]` },
+    { id: "reviews" as Tab, label: `Reviews [${reviews.length || 0}]` },
   ];
 
   return (
@@ -134,6 +134,14 @@ const ProductTabs: React.FC<ProductTabsProps> = ({
 };
 
 export default ProductTabs;
+
+
+
+
+
+
+
+
 
 
 

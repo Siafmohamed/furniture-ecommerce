@@ -44,7 +44,7 @@ const ShareButtons: React.FC<ShareButtonsProps> = ({
 
   return (
     <div className={clsx("flex items-center gap-4", className)}>
-      <span className="text-sm text-gray-600">Share:</span>
+      <span className="text-sm font-medium text-gray-900">Share:</span>
       <a
         href={shareLinks.facebook}
         target="_blank"
